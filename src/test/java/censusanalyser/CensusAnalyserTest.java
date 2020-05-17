@@ -122,7 +122,7 @@ public class CensusAnalyserTest {
             CensusAnalyser censusAnalyser = new CensusAnalyser();
             ExpectedException exceptionRule = ExpectedException.none();
             exceptionRule.expect(CensusAnalyserException.class);
-            censusAnalyser.loadIndiaCensusData(INDIA_STATE_WRONG_FILE_PATH);
+            censusAnalyser.loadIndianStateCode(INDIA_STATE_WRONG_FILE_PATH);
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
         }
@@ -134,7 +134,7 @@ public class CensusAnalyserTest {
             CensusAnalyser censusAnalyser = new CensusAnalyser();
             ExpectedException exception = ExpectedException.none();
             exception.expect(CensusAnalyserException.class);
-            censusAnalyser.loadIndiaCensusData(INDIA_STATE_TYPE_INCORRECT_PATH);
+            censusAnalyser.loadIndianStateCode(INDIA_STATE_TYPE_INCORRECT_PATH);
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
         }
@@ -146,7 +146,7 @@ public class CensusAnalyserTest {
             CensusAnalyser censusAnalyser = new CensusAnalyser();
             ExpectedException exception = ExpectedException.none();
             exception.expect(CensusAnalyserException.class);
-            censusAnalyser.loadIndiaCensusData(INDIA_STATE_INCORRECT_DELIMITER_FILE_PATH);
+            censusAnalyser.loadIndianStateCode(INDIA_STATE_INCORRECT_DELIMITER_FILE_PATH);
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
 
@@ -159,7 +159,7 @@ public class CensusAnalyserTest {
             CensusAnalyser censusAnalyser=new CensusAnalyser();
             ExpectedException exception=ExpectedException.none();
             exception.expect(CensusAnalyserException.class);
-            censusAnalyser.loadIndiaCensusData(INDIA_STATE_INCORRECT_HEADER_PATH);
+            censusAnalyser.loadIndianStateCode(INDIA_STATE_INCORRECT_HEADER_PATH);
         }catch (CensusAnalyserException e){
             Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
         }
