@@ -188,5 +188,16 @@ public class CensusAnalyserTest {
         } catch (CensusAnalyserException e) {
         }
     }
+
+    @Test
+    public void givenIndianCensusData_whenSortedOnArea_shouldReturnSortedResult() {
+        try {
+            CensusAnalyser censusAnalyser = new CensusAnalyser();
+            censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+            String sortedAreaData = censusAnalyser.getPopulationAreaWiseSortedData();
+            IndiaCensusCSV[] censusCSV = new Gson().fromJson(sortedAreaData, IndiaCensusCSV[].class);
+            Assert.assertEquals(342239, censusCSV[0].areaInSqKm);
+        } catch (CensusAnalyserException e) { }
+    }
 }
 
