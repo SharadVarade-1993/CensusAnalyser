@@ -17,6 +17,7 @@ public class CensusAnalyserTest {
     private static final  String INDIA_STATE_TYPE_INCORRECT_PATH="./src/test/resources/IndiaStateCensusData.pdf";
     private static final String INDIA_STATE_INCORRECT_DELIMITER_FILE_PATH = "./src/test/resources/IndiaStateCensusData.csv";
     private static final String INDIA_STATE_INCORRECT_HEADER_PATH="./src/test/resources/IndiaStateCensusDataHeader";
+    private static final String US_CENSUS_FILE_PATH = "./src/test/resources/USCensusData.csv";;
 
     @Test
     public void givenIndianCensusCSVFileReturnsCorrectRecords() {
@@ -198,6 +199,15 @@ public class CensusAnalyserTest {
             IndiaCensusCSV[] censusCSV = new Gson().fromJson(sortedAreaData, IndiaCensusCSV[].class);
             Assert.assertEquals(342239, censusCSV[0].areaInSqKm);
         } catch (CensusAnalyserException e) { }
+    }
+
+    @Test
+    public void givenUSCensusData_shouldReturnCorrectRecords() {
+        try {
+            CensusAnalyser censusAnalyser=new CensusAnalyser();
+            int numOfRecords = censusAnalyser.loadUSCensusData(US_CENSUS_FILE_PATH);
+            Assert.assertEquals(51,numOfRecords);
+        } catch (CensusAnalyserException e) {}
     }
 }
 
