@@ -99,6 +99,16 @@ public class CensusAnalyser {
         }
     }
 
+    public String getPopulationDensityWiseSortedData() throws CensusAnalyserException {
+        if (censusList == null || censusList.size() == 0) {
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
+        }
+        Comparator<IndiaCensusDAO> censusCSVComparator = Comparator.comparing(census -> census.densityPerSqKm);
+        this.sortByDescending(censusCSVComparator);
+        String sortedPopulationCensus = new Gson().toJson(this.censusList);
+        return sortedPopulationCensus;
+    }
+
     private void sortByDescending(Comparator<IndiaCensusDAO> censusComparator) {
         for (int i = 0; i < censusList.size() - 1; i++) {
             for (int j = 0; j < censusList.size() - i - 1; j++) {
